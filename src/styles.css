@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  color: white;
+  background: #404040;
+}
+
+/* START SIDEBAR */
+.sidebar {
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  position: fixed;
+  width: 200px;
+  background: #3a3838;
+  color: white;
+}
+
+/* Sidebar Logo */
+.logo {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Sidebar Logo-img */
+.logo img {
+  width: 200px;
+  max-height: 100%;
+  padding-right: 30px;
+}
+/* Sidebar content */
+.content{
+  overflow-y: auto;
+  height: calc(100% - 300px);
+}
+/* Sidebar content list with btn's */
+.list-btn {
+  background-color: #3a3838;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+/* Sidebar btn on hover */
+.list-btn:hover {
+  background-color: gray;
+}
+/* Sidebar list content abstand von Icon */
+.list-btn span {
+  padding-left: 20px;
+}
+/* Sidebar Icon größe */
+.fas, .far {
+  width: 16px;
+}
+/* Sidebar footer */
+.sidebar .footer {
+  height: 50px;
+  text-align: left;
+}
+/* END SIDEBAR */
+
+/* START MAIN-CONTENT */
+.mainContent {
+  margin-left: 20%;
+  background-color: #404040;
+  height: 100%;
+}
+
+.card{
+  background: #3a3838;
+}
+
