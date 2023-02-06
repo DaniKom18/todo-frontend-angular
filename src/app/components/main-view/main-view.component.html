@@ -1,0 +1,48 @@
+<!-- Main Content START -->
+<div class="container-fluid">
+  <!-- due task boxes  -->
+  <div class="row mt-5">
+    <div class="col-4" *ngFor="let dueText of dueTaskText">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{dueText}}:</h5>
+          <p class="card-text">Tasks: ...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- done task boxes  -->
+  <div class="row mt-5">
+    <div class="col-4" *ngFor="let doneTask of doneTaskText">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{doneTask}}:</h5>
+          <p class="card-text">Tasks: ...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote box  -->
+  <div class="col-12 mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Quote:</h5>
+        <p class="card-text">“If you fell down yesterday, stand up today.”</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mantra box  -->
+  <div class="col-12 mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Mantra:</h5>
+        <p class="card-text">Let it be...</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Main Content END -->

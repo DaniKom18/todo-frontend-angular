@@ -75,3 +75,38 @@ body {
   background: #3a3838;
 }
 
+.active-link {
+  font-weight: bold;
+}
+
+/* Inbox eingabe TextFeld mit BTN */
+.input-group {
+  position: absolute;
+  bottom: 35px;
+  width: 50%;
+  min-height: 25px;
+  background: #3a3838;
+}
+.input-group input{
+  background-color: transparent;
+  border: none;
+  color: white
+}
+.input-group input:focus{
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+  background-color: transparent;
+  color: white
+}
+.my-custom-button{
+  height: 50px;
+  background-color: transparent;
+  border: none
+}
+.my-custom-button:hover{
+  background-color: darkgrey;
+}
+.my-custom-button:active{
+  background-color: transparent!important;
+}

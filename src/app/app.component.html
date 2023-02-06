@@ -1,7 +1,7 @@
 <div class="d-flex h-100">
   <div class="bg-ad8df5 p-3 sidebar" style="width: 20%; position: fixed; color: white;">
     <div class="logo">
-      <a href="#">
+      <a routerLink="/main-view">
         <img src="assets/todo-white-logo-snipped.png" alt="Your logo">
       </a>
     </div>
@@ -26,7 +26,7 @@
 
   <!-- Main Content -->
   <div class="p-3 w-100 h-100 mainContent">
-  <app-item-list></app-item-list>
+    <router-outlet></router-outlet>
   </div>
 
 </div>
