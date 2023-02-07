@@ -110,3 +110,7 @@ body {
 .my-custom-button:active{
   background-color: transparent!important;
 }
+.table-hover tbody tr:hover {
+  background-color: gray;
+  --bs-table-hover-color: white;
+}

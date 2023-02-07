@@ -2,25 +2,32 @@
   <div class="row">
     <div class="col-12 p-0 overflow-auto" style="max-height: 650px;">
       <!-- Hier kommen die Boxen mit den Items hinein -->
-      <div class="card mb-3">
-        <div class="row">
-          <div class="col-6">
-            <!-- Hier kommt der Text hinein -->
-            <h1>TEXT</h1>
-          </div>
-          <div class="col-2">
-            <!-- Hier kommt das Dropdown-Menü hinein -->
-            <select class="form-control" style="height: 55px">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </select>
-          </div>
-          <div class="col-4">
-            <!-- Hier kommen die Buttons hinein -->
-            <button class="btn btn-primary my-custom-button" style="margin-left: 85px">Button 1</button>
-            <button class="btn btn-primary my-custom-button" style="margin-left: 5px">Button 2</button>
-            <button class="btn btn-primary my-custom-button" style="margin-left: 5px">Button 3</button>
+      <div class="card bg-opacity-50 shadow-2-strong">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table bg-opacity-50 table-hover mb-0" style="color: whitesmoke">
+              <thead>
+              <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">CATEGORY</th>
+                <th scope="col">DUE-DATE</th>
+                <th scope="col">ADD</th>
+                <th scope="col">DELETE</th>
+                <th scope="col">EDIT</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">Tiger Nixon</th>
+                <td>System Architectdn awjd awiojdiwa jdioawj iodja</td>
+                <td>tnixon12@example.com</td>
+                <td><button class="btn btn-primary my-custom-button" type="button"><i class="fas fa-plus"></i></button></td>
+                <td><button class="btn btn-primary my-custom-button" type="button"><i class="fas fa-trash-alt"></i></button></td>
+                <td><button class="btn btn-primary my-custom-button" type="button"><i class="fas fa-pencil-alt"></i></button></td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
