@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {Category} from "../common/category";
 import {Item} from "../common/item";
@@ -13,28 +13,27 @@ export class CategoryService {
   constructor(private httpclient: HttpClient) { }
 
   getCategories(): Observable<Category[]> {
-    return this.httpclient.get<GetResponseCategory>(this.baseUrl).pipe(
-      map(response => response._embedded.categories)
-    )
+    return this.httpclient.get<Category[]>(this.baseUrl)
   }
 
   getItemFromCategory(categoryId: number): Observable<Item[]> {
     const itemsFromCategoryUrl = `${this.baseUrl}/${categoryId}/items`
 
-    return this.httpclient.get<GetResponseCategoryItems>(itemsFromCategoryUrl).pipe(
-      map(response => response._embedded.items.sort((a,b) => a.id - b.id))
-    )
+    return this.httpclient.get<Item[]>(itemsFromCategoryUrl)
   }
-}
 
-interface GetResponseCategory{
-  _embedded: {
-    categories: Category[];
-  }
-}
+  postItemToCategory(categoryId: number, description: string) {
 
-interface GetResponseCategoryItems{
-  _embedded: {
-    items: Item[];
-  }
+    const body = JSON.stringify({"description": description})
+    console.log("Message send to category " + categoryId + " Body: " + body)
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
+    this.httpclient.post(`${this.baseUrl}/${categoryId}/items`, body, httpOptions).subscribe()
+
+}
 }
