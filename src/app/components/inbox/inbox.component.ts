@@ -20,7 +20,7 @@ export class InboxComponent implements OnInit{
 
   ngOnInit(): void {
     this.getItems();
-    this.getCategories()
+    this.getCategories();
     this.categoryService.RefreshRequired.subscribe(
       ()=> this.getItems()
     )
@@ -48,8 +48,21 @@ export class InboxComponent implements OnInit{
   getCategories(){
     this.categoryService.getCategories().subscribe(
       data => {
-        this.categories = data;
+        this.categories = data.filter(o => o.name != 'Inbox');
       }
     )
+  }
+
+  updateInboxMessage(item: Item, name: string, categoryName: string, date: Date) {
+    console.log(item.id +" => " + name +" => " + categoryName+" => " + date)
+
+    if (name.length > 0){
+      const selectedCategoryId = this.categories.find(category => category.name == categoryName)!;
+      item.name = name;
+      item.dateDue = date
+      this.categoryService.updateInboxItem(item, selectedCategoryId.id)
+    }
+    else alert("Please fill all gaps")
+
   }
 }

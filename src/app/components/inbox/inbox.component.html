@@ -18,15 +18,17 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of items">
-                <th scope="row"><input type="text" class="form-control" placeholder="enter title..."></th>
+
+                <th scope="row"><input #mySelectedTitle type="text" class="form-control" placeholder="enter title..."></th>
                 <td>{{item.description}}</td>
                 <td>
                   <select #mySelectedCategory class="form-control">
-                    <option selected="selected" *ngFor="let category of categories">{{category.name}}</option>
+                    <option *ngFor="let category of categories">{{category.name}}</option>
                   </select></td>
-                <td><input type="date" class="form-control"></td>
-                <td><button class="btn btn-primary my-custom-button" type="button"><i class="fas fa-plus"></i></button></td>
+                <td><input #mySelectedDate type="date" class="form-control"></td>
+                <td><button class="btn btn-primary my-custom-button" type="button" (click)="updateInboxMessage(item , mySelectedTitle.value ,mySelectedCategory.value, mySelectedDate.valueAsDate!)"><i class="fas fa-plus"></i></button></td>
                 <td><button class="btn btn-primary my-custom-button" type="button" (click)="deleteInboxMessage(item)"><i class="fas fa-trash-alt"></i></button></td>
+
               </tr>
               </tbody>
             </table>

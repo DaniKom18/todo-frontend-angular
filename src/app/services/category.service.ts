@@ -30,7 +30,6 @@ export class CategoryService {
   postItemToCategory(categoryId: number, description: string) {
 
     const body = JSON.stringify({"description": description})
-    console.log("Message send to category " + categoryId + " Body: " + body)
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -48,6 +47,23 @@ export class CategoryService {
 
   deleteItemFromCategory(id: number) {
     this.httpclient.delete(`${this.itemUrl}/${id}`).pipe(
+      tap(() => {
+        this.RefreshRequired.next()
+      })
+    ).subscribe()
+  }
+
+  updateInboxItem(item: Item, categoryId: number) {
+
+    const body = JSON.stringify(item);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+
+    this.httpclient.put(`${this.baseUrl}/${categoryId}/items`,body, httpOptions).pipe(
       tap(() => {
         this.RefreshRequired.next()
       })
