@@ -27,7 +27,10 @@ export class InboxComponent implements OnInit{
   }
 
   postInboxMessage(description: string) {
-    this.categoryService.postItemToCategory(this.categoryId, description)
+    if (description.length > 3){
+      this.categoryService.postItemToCategory(this.categoryId, description)
+    }
+    else alert("message must be larger than 3 characters")
   }
 
   getItems() {
