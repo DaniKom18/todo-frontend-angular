@@ -22,13 +22,11 @@
                 <td>{{item.description}}</td>
                 <td>
                   <select #mySelectedCategory class="form-control">
-                    <option selected="selected">Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
+                    <option selected="selected" *ngFor="let category of categories">{{category.name}}</option>
                   </select></td>
                 <td><input type="date" class="form-control"></td>
                 <td><button class="btn btn-primary my-custom-button" type="button"><i class="fas fa-plus"></i></button></td>
-                <td><button class="btn btn-primary my-custom-button" type="button"><i class="fas fa-trash-alt"></i></button></td>
+                <td><button class="btn btn-primary my-custom-button" type="button" (click)="deleteInboxMessage(item)"><i class="fas fa-trash-alt"></i></button></td>
               </tr>
               </tbody>
             </table>
@@ -44,9 +42,9 @@
     <div class="col-9" style="padding-left: 175px;">
       <!-- Hier kommt das Textfeld hinein -->
       <div class="input-group" style="height: 50px">
-        <input #MyDescriptionInput type="text" (keyup.enter)="postInboxMessage(MyDescriptionInput.value)" class="form-control"/>
+        <input #MyDescriptionInput type="text" (keyup.enter)="postInboxMessage(MyDescriptionInput.value); MyDescriptionInput.value=''" class="form-control"/>
         <div class="input-group-append">
-          <button class="btn btn-primary my-custom-button" type="button" (click)="postInboxMessage(MyDescriptionInput.value)"><i class="fas fa-paper-plane"></i></button>
+          <button class="btn btn-primary my-custom-button" type="button" (click)="postInboxMessage(MyDescriptionInput.value); MyDescriptionInput.value=''"><i class="fas fa-paper-plane"></i></button>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {map, Observable, Subject, tap} from "rxjs";
 import {Category} from "../common/category";
 import {Item} from "../common/item";
 
@@ -10,6 +10,11 @@ import {Item} from "../common/item";
 export class CategoryService {
 
   private baseUrl = "http://localhost:8080/api/categories"
+  private itemUrl = "http://localhost:8080/api/items"
+  private _refreshRequired = new Subject<void>();
+  get RefreshRequired(){
+    return this._refreshRequired;
+  }
   constructor(private httpclient: HttpClient) { }
 
   getCategories(): Observable<Category[]> {
@@ -33,7 +38,19 @@ export class CategoryService {
       })
     };
 
-    this.httpclient.post(`${this.baseUrl}/${categoryId}/items`, body, httpOptions).subscribe()
+    this.httpclient.post(`${this.baseUrl}/${categoryId}/items`, body, httpOptions).pipe(
+      tap(() => {
+        this.RefreshRequired.next()
+      })
+    ).subscribe()
 
 }
+
+  deleteItemFromCategory(id: number) {
+    this.httpclient.delete(`${this.itemUrl}/${id}`).pipe(
+      tap(() => {
+        this.RefreshRequired.next()
+      })
+    ).subscribe()
+  }
 }
