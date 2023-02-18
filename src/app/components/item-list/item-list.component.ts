@@ -20,10 +20,12 @@ export class ItemListComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
-      this.getItems()
+      this.getItems();
     });
+    this.categoryService.RefreshRequired.subscribe(
+      () => this.getItems()
+    )
   }
-
 
   private getItems() {
     const hasCategoryId = this.route.snapshot.paramMap.has("id");
@@ -35,8 +37,17 @@ export class ItemListComponent implements OnInit{
     // now get the products for the given category id
     this.categoryService.getItemFromCategory(this.categoryId).subscribe(
       data => {
-        this.items = data;
+        this.items = data
       }
     )
+  }
+
+  deleteItem(item: Item){
+    this.categoryService.deleteItemFromCategory(item.id);
+  }
+
+  updateItemToCompleted(item:Item, categoryId: number){
+    item.dateCompleted = new Date();
+    this.categoryService.updateItem(item, categoryId)
   }
 }

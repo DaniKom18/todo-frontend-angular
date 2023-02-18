@@ -29,7 +29,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [CategoryService],
   bootstrap: [AppComponent]

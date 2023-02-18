@@ -53,7 +53,7 @@ export class CategoryService {
     ).subscribe()
   }
 
-  updateInboxItem(item: Item, categoryId: number) {
+  updateItem(item: Item, categoryId: number) {
 
     const body = JSON.stringify(item);
 

@@ -1,16 +1,35 @@
-<!-- Main Content START -->
-<div class="container-fluid">
-  <!-- item boxes  -->
-  <div class="row mt-5" *ngFor="let item of items">
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{item.name}}</h5>
-          <p class="card-text">{{item.description}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="main-content">
+  <div class="box-content">
 
+    <div class="h1 mb-5">ITEMS</div>
+
+    <div class="row mt-3" *ngFor="let item of items">
+      <div class="col-1 box-item">
+        <button class="btn btn-success" title="Completed" (click)="updateItemToCompleted(item, 5)">
+          <i class="fas fa-check"></i>
+        </button>
+      </div>
+      <div class="col-3 box-item">
+        <h3>{{item.name}}</h3>
+      </div>
+      <div class="col-4 box-item">
+        <p>{{item.description}}</p>
+      </div>
+      <div class="col-2 box-item">
+        {{item.dateDue | date:"EEEE, dd.MM.yyyy"}}
+      </div>
+      <div class="col-1 box-item">
+        <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit">
+          <i class="fas fa-edit"></i>
+        </button>
+      </div>
+      <div class="col-1 box-item">
+        <button class="btn btn-danger" (click)="deleteItem(item)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+      <hr class="border-white">
+    </div>
+
+  </div>
 </div>
-<!-- Main Content END -->

@@ -60,7 +60,7 @@ export class InboxComponent implements OnInit{
       const selectedCategoryId = this.categories.find(category => category.name == categoryName)!;
       item.name = name;
       item.dateDue = date
-      this.categoryService.updateInboxItem(item, selectedCategoryId.id)
+      this.categoryService.updateItem(item, selectedCategoryId.id)
     }
     else alert("Please fill all gaps")
 
