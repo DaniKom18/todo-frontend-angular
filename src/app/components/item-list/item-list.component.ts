@@ -24,17 +24,22 @@ export class ItemListComponent implements OnInit{
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.getItems();
-      //Reset Map
-      this.itemsMappedToDate = new Map()
-      //Reset Array
-      this.itemsWithNoDueDate = []
     });
     this.categoryService.RefreshRequired.subscribe(
       () => this.getItems()
     )
   }
 
+  private resetMapAndArray() {
+    //Reset Map
+    this.itemsMappedToDate = new Map()
+    //Reset Array
+    this.itemsWithNoDueDate = []
+  }
+
   private getItems() {
+    this.resetMapAndArray();
+
     const hasCategoryId = this.route.snapshot.paramMap.has("id");
 
     if (hasCategoryId){
