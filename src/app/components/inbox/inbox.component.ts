@@ -36,7 +36,7 @@ export class InboxComponent implements OnInit{
   getItems() {
     this.categoryService.getItemFromCategory(this.categoryId).subscribe(
       data => {
-        this.items = data.sort((a,b) => a.id - b.id);
+        this.items = data;
       }
     )
   }
@@ -58,11 +58,11 @@ export class InboxComponent implements OnInit{
 
     if (name.length > 0){
       const selectedCategoryId = this.categories.find(category => category.name == categoryName)!;
-      item.name = name;
+      item.title = name;
       item.dateDue = date
       this.categoryService.updateItem(item, selectedCategoryId.id)
     }
-    else alert("Please fill all gaps")
+    else alert("please add a title before submitting")
 
   }
 }

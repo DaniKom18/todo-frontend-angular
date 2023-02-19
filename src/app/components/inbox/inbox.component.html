@@ -20,7 +20,7 @@
               <tr *ngFor="let item of items">
 
                 <th scope="row"><input #mySelectedTitle type="text" class="form-control" placeholder="enter title..."></th>
-                <td>{{item.description}}</td>
+                <td style="max-width: 450px; word-wrap: break-word;">{{item.description}}</td>
                 <td>
                   <select #mySelectedCategory class="form-control">
                     <option *ngFor="let category of categories">{{category.name}}</option>

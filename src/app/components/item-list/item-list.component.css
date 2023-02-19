@@ -1,0 +1,12 @@
+td.description {
+  max-width: 300px; /* setze die maximale Breite der Spalte */
+  white-space: nowrap; /* verhindere Zeilenumbrüche */
+  overflow: hidden; /* beschränke den Inhalt auf den sichtbaren Bereich */
+  text-overflow: ellipsis; /* füge am Ende einen Auslassungspunkt hinzu */
+}
+td.title {
+  max-width: 100px; /* setze die maximale Breite der Spalte */
+  white-space: nowrap; /* verhindere Zeilenumbrüche */
+  overflow: hidden; /* beschränke den Inhalt auf den sichtbaren Bereich */
+  text-overflow: ellipsis; /* füge am Ende einen Auslassungspunkt hinzu */
+}
