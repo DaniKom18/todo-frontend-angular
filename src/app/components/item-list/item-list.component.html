@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="h1"> TODO'S </div>
+    <div class="h1"> {{this.categoryName}} </div>
     <div class="col-12 p-0 overflow-auto">
       <div class="card bg-opacity-50 shadow-2-strong mb-5" *ngFor="let itemMap of itemsMappedToDate | keyvalue">
         <div class="card-body">
-          <h2>{{ itemMap.key }}</h2>
+          <h2>{{itemMap.key}}</h2>
           <hr class="m-1" style="border-top: 8px solid white;">
           <div class="table-responsive">
             <table class="table bg-opacity-50 table-hover mb-0" style="color: whitesmoke">
@@ -15,9 +15,9 @@
                     <i class="fas fa-check"></i>
                   </button>
                 </td>
-                <td class="title">{{item.title}}</td>
-                <td class="description">{{item.description}}</td>
-                <td class="text-right" style="width: 180px;">created {{calculateDays(item)}} days ago</td>
+                <td class="title text">{{item.title}}</td>
+                <td class="description text">{{item.description}}</td>
+                <td class="text-right text" style="width: 180px;">created {{calculateDays(item)}} days ago</td>
                 <td class="text-right" style="width: 50px;">
                   <button class="btn btn-primary my-custom-button" title="Edit">
                     <i class="fas fa-edit"></i>

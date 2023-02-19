@@ -10,3 +10,6 @@ td.title {
   overflow: hidden; /* beschränke den Inhalt auf den sichtbaren Bereich */
   text-overflow: ellipsis; /* füge am Ende einen Auslassungspunkt hinzu */
 }
+td.text{
+  padding-top: 20px;
+}

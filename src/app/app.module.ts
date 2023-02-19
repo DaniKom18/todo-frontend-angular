@@ -11,8 +11,8 @@ import { ItemListComponent } from './components/item-list/item-list.component';
 import { MainViewComponent } from './components/main-view/main-view.component';
 
 const routes: Routes = [
-  {path: "category/:id", component: ItemListComponent},
-  {path: "inbox", component: InboxComponent},
+  {path: "category/:categoryName/:id", component: ItemListComponent},
+  {path: "category/inbox/1", component: InboxComponent},
   {path: "main-view", component: MainViewComponent},
   {path: "", redirectTo:"/", pathMatch:"full"},
   {path: "**", redirectTo:"/", pathMatch:"full"},

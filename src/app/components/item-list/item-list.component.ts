@@ -3,6 +3,7 @@ import {Item} from "../../common/item";
 import {CategoryService} from "../../services/category.service";
 import {ActivatedRoute} from "@angular/router";
 import {DatePipe} from "@angular/common";
+import {Category} from "../../common/category";
 
 @Component({
   selector: 'app-item-list',
@@ -13,6 +14,7 @@ export class ItemListComponent implements OnInit{
 
   public items: Item[] = [];
   public categoryId: number = 0;
+  public categoryName: string = ""
   public itemsMappedToDate: Map<String, Item[]> = new Map();
   public itemsWithNoDueDate: Item[] = []
 
@@ -41,9 +43,13 @@ export class ItemListComponent implements OnInit{
     this.resetMapAndArray();
 
     const hasCategoryId = this.route.snapshot.paramMap.has("id");
+    const hasCategoryName = this.route.snapshot.paramMap.has("categoryName");
 
     if (hasCategoryId){
       this.categoryId = +this.route.snapshot.paramMap.get("id")!;
+    }
+    if (hasCategoryName){
+      this.categoryName = this.route.snapshot.paramMap.get("categoryName")!;
     }
 
     // now get the products for the given category id
@@ -88,7 +94,7 @@ export class ItemListComponent implements OnInit{
     for (let item of this.items){
       if (item.dateDue!= null){
         const myDate = new Date(item.dateDue);
-        const formattedDate = datePipe.transform(myDate, 'dd.MM.yyyy')!;
+        const formattedDate = datePipe.transform(myDate, 'dd.MM')!;
 
         if (!this.itemsMappedToDate.has(formattedDate)){
           let tempArray: Item[] = [];
@@ -107,9 +113,10 @@ export class ItemListComponent implements OnInit{
 
     }
     if (this.itemsWithNoDueDate.length != 0){
-      this.itemsMappedToDate.set("NO DUE Date", this.itemsWithNoDueDate)
+      this.itemsMappedToDate.set("SOMEDAY", this.itemsWithNoDueDate)
     }
     console.log(this.itemsMappedToDate)
     console.log(this.itemsWithNoDueDate)
   }
+
 }
