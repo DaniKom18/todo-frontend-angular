@@ -21,10 +21,15 @@ export class CategoryService {
     return this.httpclient.get<Category[]>(this.baseUrl)
   }
 
-  getItemFromCategory(categoryId: number): Observable<Item[]> {
+  getItemsFromCategory(categoryId: number): Observable<Item[]> {
     const itemsFromCategoryUrl = `${this.baseUrl}/${categoryId}/items`
 
     return this.httpclient.get<Item[]>(itemsFromCategoryUrl)
+  }
+
+  getItem(itemId: number): Observable<Item>{
+    const getSingleItemUrl = `${this.itemUrl}/${itemId}`
+    return this.httpclient.get<Item>(getSingleItemUrl);
   }
 
   postItemToCategory(categoryId: number, description: string) {

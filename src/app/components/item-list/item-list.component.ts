@@ -53,7 +53,7 @@ export class ItemListComponent implements OnInit{
     }
 
     // now get the products for the given category id
-    this.categoryService.getItemFromCategory(this.categoryId).subscribe(
+    this.categoryService.getItemsFromCategory(this.categoryId).subscribe(
       data => {
         this.items = data.sort((a,b) => {
           if (a.dateDue != null && b.dateDue != null){
@@ -115,8 +115,6 @@ export class ItemListComponent implements OnInit{
     if (this.itemsWithNoDueDate.length != 0){
       this.itemsMappedToDate.set("SOMEDAY", this.itemsWithNoDueDate)
     }
-    console.log(this.itemsMappedToDate)
-    console.log(this.itemsWithNoDueDate)
   }
 
 }

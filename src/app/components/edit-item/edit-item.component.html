@@ -1,0 +1,28 @@
+<div class="container" style="width: 800px; padding-top: 100px">
+<form>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input #mySelectedTitle type="text" class="form-control" id="title" value="{{item.title}}" name="title">
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea #mySelectedDescription class="form-control" id="description" rows="3"  name="description">{{item.description}}</textarea>
+  </div>
+  <div class="mb-3">
+    <label for="dropdownMenu" class="form-label">Category</label>
+    <select #mySelectedCategory class="form-select" aria-label="Category" id="dropdownMenu" name="category">
+      <option selected>{{previousCategoryName}}</option>
+      <option *ngFor="let category of categories">{{category.name}}</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input #mySelectedDate id="date" type="date" class="form-control" [value]="selectedDate | date:'yyyy-MM-dd'" [(ngModel)]="selectedDate">
+
+  </div>
+  <div class="mt-5" style="padding-left: 280px">
+    <button type="button" class="btn btn-secondary me-2" [routerLink]="'/category/'+ this.previousCategoryName + '/' + this.categoryId">Back</button>
+    <button type="submit" class="btn btn-primary" style="margin-left: 50px;" (click)="updateItem(mySelectedTitle.value , mySelectedDescription.value ,mySelectedCategory.value, mySelectedDate.valueAsDate!)" [routerLink]="'/category/'+ this.previousCategoryName + '/' + this.categoryId">Save</button>
+  </div>
+</form>
+</div>

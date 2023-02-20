@@ -19,7 +19,7 @@
                 <td class="description text">{{item.description}}</td>
                 <td class="text-right text" style="width: 180px;">created {{calculateDays(item)}} days ago</td>
                 <td class="text-right" style="width: 50px;">
-                  <button class="btn btn-primary my-custom-button" title="Edit">
+                  <button class="btn btn-primary my-custom-button" title="Edit" [routerLink]="'/edit/' + categoryName + '/' + item.id">
                     <i class="fas fa-edit"></i>
                   </button>
                 </td>

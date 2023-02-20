@@ -34,7 +34,7 @@ export class InboxComponent implements OnInit{
   }
 
   getItems() {
-    this.categoryService.getItemFromCategory(this.categoryId).subscribe(
+    this.categoryService.getItemsFromCategory(this.categoryId).subscribe(
       data => {
         this.items = data;
       }

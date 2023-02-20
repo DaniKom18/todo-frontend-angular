@@ -9,10 +9,13 @@ import {RouterModule, Routes} from "@angular/router";
 import { InboxComponent } from './components/inbox/inbox.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { MainViewComponent } from './components/main-view/main-view.component';
+import { EditItemComponent } from './components/edit-item/edit-item.component';
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
-  {path: "category/:categoryName/:id", component: ItemListComponent},
+  {path: "edit/:categoryName/:itemId", component: EditItemComponent},
   {path: "category/inbox/1", component: InboxComponent},
+  {path: "category/:categoryName/:id", component: ItemListComponent},
   {path: "main-view", component: MainViewComponent},
   {path: "", redirectTo:"/", pathMatch:"full"},
   {path: "**", redirectTo:"/", pathMatch:"full"},
@@ -24,12 +27,14 @@ const routes: Routes = [
     SidbarCategoryComponent,
     InboxComponent,
     ItemListComponent,
-    MainViewComponent
+    MainViewComponent,
+    EditItemComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [CategoryService],
   bootstrap: [AppComponent]
