@@ -32,6 +32,10 @@ export class CategoryService {
     return this.httpclient.get<Item>(getSingleItemUrl);
   }
 
+  getCompletedItems(): Observable<Item[]>{
+    const getCompletedItemUrl = `${this.itemUrl}/completed`
+    return this.httpclient.get<Item[]>(getCompletedItemUrl);
+  }
   postItemToCategory(categoryId: number, description: string) {
 
     const body = JSON.stringify({"description": description})
@@ -69,6 +73,14 @@ export class CategoryService {
     };
 
     this.httpclient.put(`${this.baseUrl}/${categoryId}/items`,body, httpOptions).pipe(
+      tap(() => {
+        this.RefreshRequired.next()
+      })
+    ).subscribe()
+  }
+
+  deleteAllItemsFromCategory(categoryId: number) {
+    this.httpclient.delete(`${this.baseUrl}/${categoryId}/items`).pipe(
       tap(() => {
         this.RefreshRequired.next()
       })

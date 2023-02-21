@@ -1,7 +1,7 @@
 <div class="content p-3">
   <ul class="list-unstyled">
     <li *ngFor="let category of categories" >
-      <a [routerLink]="category.id === 1 ? '/category/inbox/1' : '/category/'+ category.name +'/'+category.id">
+      <a [routerLink]="category.id === 1 ? '/category/inbox/1' : category.id === 5 ? '/category/completed/5' : '/category/'+ category.name +'/'+category.id">
         <button class="list-btn"><i class="{{category.icon}}"></i><span>{{category.name}}</span></button>
       </a>
     </li>

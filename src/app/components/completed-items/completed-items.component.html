@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="h1" style="margin-left: 30%"> Completed Tasks </div>
+    <div><button class="btn btn-secondary" style="margin-left: 42%; margin-bottom: 10px" title="clear" (click)="clearAllItems()"><i class="fas fa-trash"></i></button></div>
+    <div class="col-12 p-0 overflow-auto" style="max-height: 650px;">
+      <!-- Hier kommen die Boxen mit den Items hinein -->
+      <div class="card bg-opacity-50 shadow-2-strong">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table bg-opacity-50 table-hover mb-0" style="color: whitesmoke">
+              <thead>
+              <tr>
+                <th scope="col">TITLE</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">COMPLETED</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of items">
+
+                <th scope="row">{{item.title}}</th>
+                <td style="max-width: 450px; word-wrap: break-word;">{{item.description}}</td>
+                <td>{{item.dateCompleted | date:'yyyy-MM-dd'}}</td>
+
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="items.length == 0" class="alert alert-warning col-md-12" role="alert" style="margin-top: 20px">
+      No completed tasks available
+    </div>
+  </div>
+</div>
