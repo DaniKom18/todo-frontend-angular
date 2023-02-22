@@ -17,6 +17,9 @@ export class SidbarCategoryComponent implements OnInit{
 
   ngOnInit(): void {
     this.listCategories()
+    this.categoryService.RefreshRequired.subscribe(
+      () => this.listCategories()
+    )
   }
 
   private listCategories()  {
