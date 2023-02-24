@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 })
 export class MainViewComponent {
 
-  dueTaskText: string[] = ["Due tasks this week", "Due tasks this month", "Due tasks total"]
-  doneTaskText: string[] = ["Done tasks this week", "Done tasks this month", "Done tasks total"];
+  dueTaskText: string[] = ["Ich bin ein Sportler", "Ich bin ein Softwareentwickler", "Ich bin Diszipliniert", "Ich bin ein Student", "Ich bin ein Autor", "Ich bin ein Leser", "Ich bin ein Freund", "Ich bin ein Anime-Fan", "Ich bin ein guter Mensch", "Ich bin Sozialkompetent", "Ich bin ein Koch", "Ich bin ein Frühaufsteher"]
   quotes: string[] = [];
   mantras: string[] = [];
 

@@ -15,8 +15,8 @@ import { CompletedItemsComponent } from './components/completed-items/completed-
 
 const routes: Routes = [
   {path: "edit/:categoryName/:itemId", component: EditItemComponent},
-  {path: "category/completed/5", component: CompletedItemsComponent},
-  {path: "category/inbox/1", component: InboxComponent},
+  {path: "category/completed/:id", component: CompletedItemsComponent},
+  {path: "category/inbox/:id", component: InboxComponent},
   {path: "category/:categoryName/:id", component: ItemListComponent},
   {path: "main-view", component: MainViewComponent},
   {path: "", redirectTo:"/", pathMatch:"full"},

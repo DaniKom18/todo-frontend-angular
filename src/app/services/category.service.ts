@@ -32,10 +32,6 @@ export class CategoryService {
     return this.httpclient.get<Item>(getSingleItemUrl);
   }
 
-  getCompletedItems(): Observable<Item[]>{
-    const getCompletedItemUrl = `${this.itemUrl}/completed`
-    return this.httpclient.get<Item[]>(getCompletedItemUrl);
-  }
   postItemToCategory(categoryId: number, description: string) {
 
     const body = JSON.stringify({"description": description})

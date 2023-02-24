@@ -10,7 +10,9 @@ import {Item} from "../../common/item";
 })
 export class CompletedItemsComponent implements OnInit{
 
-  items: Item[] = []
+  items: Item[] = [];
+  categoryId: number = 0;
+
 
   constructor(private categoryService: CategoryService,
               private route: ActivatedRoute) {
@@ -18,6 +20,13 @@ export class CompletedItemsComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
+
+      const hasCategoryId = this.route.snapshot.paramMap.has("id");
+
+      if (hasCategoryId){
+        this.categoryId = +this.route.snapshot.paramMap.get("id")!;
+      }
+
       this.getItems();
     });
     this.categoryService.RefreshRequired.subscribe(
@@ -26,7 +35,7 @@ export class CompletedItemsComponent implements OnInit{
   }
 
   getItems(){
-    this.categoryService.getCompletedItems().subscribe(
+    this.categoryService.getItemsFromCategory(this.categoryId).subscribe(
       data => {
         this.items = data
       }
@@ -34,6 +43,6 @@ export class CompletedItemsComponent implements OnInit{
   }
 
   clearAllItems() {
-    this.categoryService.deleteAllItemsFromCategory(5)
+    this.categoryService.deleteAllItemsFromCategory(this.categoryId)
   }
 }

@@ -13,9 +13,10 @@ export class InboxComponent implements OnInit{
 
   items: Item[] = [];
   categories: Category[] = []
-  categoryId: number = 1;
+  categoryId: number = 0;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -34,6 +35,12 @@ export class InboxComponent implements OnInit{
   }
 
   getItems() {
+    const hasCategoryId = this.route.snapshot.paramMap.has("id");
+
+    if (hasCategoryId){
+      this.categoryId = +this.route.snapshot.paramMap.get("id")!;
+    }
+
     this.categoryService.getItemsFromCategory(this.categoryId).subscribe(
       data => {
         this.items = data;
